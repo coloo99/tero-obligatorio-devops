@@ -1,0 +1,10 @@
+.git
+.gitignore
+*.md
+Dockerfile
+.dockerignore
+.env*
+__pycache__/
+*.pyc
+.venv/
+project.json
