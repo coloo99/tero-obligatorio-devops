@@ -1,0 +1,30 @@
+# Secretos: nunca se suben
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencias y compilados
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.venv/
+
+# Yarn 4 (checkout): se sube solo el ejecutable de yarn
+src/checkout/.yarn/*
+!src/checkout/.yarn/releases
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/

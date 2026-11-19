@@ -1,0 +1,7 @@
+# Todos los archivos de texto se guardan con finales de línea de Linux (LF).
+# Evita que scripts y Dockerfiles fallen dentro de los contenedores.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
+*.zip binary

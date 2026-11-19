@@ -1,0 +1,11 @@
+﻿git version 2.56.0.windows.4
+v24.16.0
+gh version 2.103.3 (2026-10-26)
+https://github.com/cli/cli/releases/tag/v2.103.3
+aws-cli/2.41.0 Python/3.14.8 Windows/11 exe/AMD64
+Terraform v1.17.1
+on windows_amd64
+
+Your version of Terraform is out of date! The latest version
+is 1.17.2. You can update by downloading from https://developer.hashicorp.com/terraform/install
+

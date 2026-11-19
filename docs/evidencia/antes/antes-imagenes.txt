@@ -1,0 +1,10 @@
+﻿IMAGE                       ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest          1e4c05b897a7       25.9kB         9.49kB   U    
+postgres:16                 dd2bf3ce2dc8        667MB          172MB   U    
+redis:7-alpine              7f7d30b7fdd0       58.5MB         16.9MB   U    
+tero-main-admin:latest      f5ed8db5a150       1.73GB          426MB   U    
+tero-main-carts:latest      0e4f724ddc9a       1.71GB          447MB   U    
+tero-main-catalog:latest    87f9d30c6cec       2.26GB          570MB   U    
+tero-main-checkout:latest   e41467c76c41       2.03GB          466MB   U    
+tero-main-orders:latest     d75939e3e167       2.03GB          499MB   U    
+tero-main-ui:latest         24d1b66fa81f       1.72GB          426MB   U    
