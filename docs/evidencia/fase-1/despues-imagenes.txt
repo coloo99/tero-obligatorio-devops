@@ -1,0 +1,17 @@
+IMAGE                              ID             DISK USAGE   CONTENT SIZE   EXTRA
+ghcr.io/gitleaks/gitleaks:latest   c00b6bd0aeb3       76.6MB         25.1MB        
+hello-world:latest                 1e4c05b897a7       25.9kB         9.49kB   U    
+postgres:16                        dd2bf3ce2dc8        667MB          172MB   U    
+redis:7-alpine                     7f7d30b7fdd0       58.5MB         16.9MB   U    
+tero-devops-admin:latest           87f5d39c4753        247MB         62.3MB   U    
+tero-devops-carts:latest           2876b2eec8fe        261MB         62.7MB   U    
+tero-devops-catalog:latest         a7df38659465       38.5MB         9.33MB   U    
+tero-devops-checkout:latest        9bf9a04fb646        329MB         72.4MB   U    
+tero-devops-orders:latest          45bb873b91e2       28.2MB          6.5MB   U    
+tero-devops-ui:latest              9834ddf8d4ed        249MB         62.8MB   U    
+tero-main-admin:latest             f5ed8db5a150       1.73GB          426MB        
+tero-main-carts:latest             0e4f724ddc9a       1.71GB          447MB        
+tero-main-catalog:latest           87f9d30c6cec       2.26GB          570MB        
+tero-main-checkout:latest          e41467c76c41       2.03GB          466MB        
+tero-main-orders:latest            d75939e3e167       2.03GB          499MB        
+tero-main-ui:latest                24d1b66fa81f       1.72GB          426MB        

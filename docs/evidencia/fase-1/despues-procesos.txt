@@ -1,0 +1,19 @@
+SERVICE   #   UID    PID   PPID  C   STIME  TTY  TIME      CMD
+admin     1   1000   7953  7930  0   14:59  ?    00:00:00  node dist/app.js
+carts     1   10001  7833  7808  0   14:59  ?    00:00:00  sh -c uvicorn app.main:app --host 0.0.0.0 --port ${PORT}
+carts     1   10001  7858  7833  0   14:59  ?    00:00:02  /opt/venv/bin/python /opt/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8080
+catalog   1   65532  7770  7746  0   14:59  ?    00:00:00  /app
+checkout  1   1000   8022  7998  0   14:59  ?    00:00:01  node dist/main.js
+db        1   999    7563  7539  0   14:59  ?    00:00:00  postgres
+db        1   999    7712  7563  0   14:59  ?    00:00:00  postgres: checkpointer
+db        1   999    7713  7563  0   14:59  ?    00:00:00  postgres: background writer
+db        1   999    7715  7563  0   14:59  ?    00:00:00  postgres: walwriter
+db        1   999    7716  7563  0   14:59  ?    00:00:00  postgres: autovacuum launcher
+db        1   999    7717  7563  0   14:59  ?    00:00:00  postgres: logical replication launcher
+db        1   999    7798  7563  0   14:59  ?    00:00:00  postgres: retail_user catalogdb 172.18.0.4(60138) idle
+db        1   999    7921  7563  0   14:59  ?    00:00:00  postgres: retail_user orders 172.18.0.6(42856) idle
+db        1   999    8133  7563  0   14:59  ?    00:00:00  postgres: retail_user cartdb 172.18.0.5(38132) idle
+db        1   999    9082  7563  0   15:03  ?    00:00:00  postgres: retail_user catalogdb 172.18.0.4(44232) idle
+orders    1   65532  7890  7867  0   14:59  ?    00:00:00  /app
+redis     1   999    7633  7594  0   14:59  ?    00:00:02  redis-server *:6379
+ui        1   1000   8086  8060  0   14:59  ?    00:00:00  node dist/app.js

@@ -1,0 +1,6 @@
+ui -> node
+catalog -> nonroot:nonroot
+carts -> 10001
+checkout -> node
+orders -> nonroot:nonroot
+admin -> node

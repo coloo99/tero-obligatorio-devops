@@ -1,0 +1,9 @@
+NAME                     IMAGE                  COMMAND                  SERVICE    CREATED          STATUS                    PORTS
+tero-devops-admin-1      tero-devops-admin      "docker-entrypoint.s…"   admin      13 minutes ago   Up 13 minutes             0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp
+tero-devops-carts-1      tero-devops-carts      "sh -c 'uvicorn app.…"   carts      13 minutes ago   Up 13 minutes             8080/tcp
+tero-devops-catalog-1    tero-devops-catalog    "/app"                   catalog    13 minutes ago   Up 13 minutes             8080/tcp
+tero-devops-checkout-1   tero-devops-checkout   "docker-entrypoint.s…"   checkout   13 minutes ago   Up 13 minutes             8080/tcp
+tero-devops-db-1         postgres:16            "docker-entrypoint.s…"   db         13 minutes ago   Up 13 minutes (healthy)   5432/tcp
+tero-devops-orders-1     tero-devops-orders     "/app"                   orders     13 minutes ago   Up 13 minutes             8080/tcp
+tero-devops-redis-1      redis:7-alpine         "docker-entrypoint.s…"   redis      13 minutes ago   Up 13 minutes             6379/tcp
+tero-devops-ui-1         tero-devops-ui         "docker-entrypoint.s…"   ui         13 minutes ago   Up 13 minutes             0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
