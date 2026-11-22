@@ -20,6 +20,10 @@ Evidencia: `docs/evidencia/fase-2/03-sonar-inicial.png` y `docs/evidencia/fase-2
 
 Nota: la página Overview muestra 41 issues y la suma de las tres categorías da 47, porque un mismo issue puede afectar a más de una categoría (por ejemplo, seguridad y confiabilidad).
 
+## Primer análisis desde el pipeline (PR #44, 22/11/2026)
+
+Quality gate: **no aprobado**. Una condición falló: la nota de seguridad del código nuevo es C y el gate exige A. Sobre 169 líneas nuevas hubo 7 issues nuevos, 0 security hotspots, 0,0 % de duplicación y 7 riesgos de dependencias.
+
 ## Umbrales del quality gate
 
 Se usa el quality gate "Sonar way" sobre el código nuevo: notas A en seguridad, confiabilidad y mantenibilidad, todos los security hotspots revisados y duplicación de 3 % o menos.
