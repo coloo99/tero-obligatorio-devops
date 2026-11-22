@@ -1,0 +1,214 @@
+{
+  "info": {
+    "name": "Tero - tests de integracion",
+    "description": "Recorre el flujo de compra completo a traves de la ui: catalogo, carrito, checkout y ordenes. Corre contra docker compose (local y CI) y contra la URL del ALB de Test (CD).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Un cliente nuevo por corrida, asi los tests no dependen de datos anteriores.",
+          "if (!pm.collectionVariables.get('customerId')) {",
+          "  pm.collectionVariables.set('customerId', 'newman-' + Date.now());",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - La ui responde",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('La ui responde 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 - El catalogo lista productos",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/catalog/products"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('El catalogo responde 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "const productos = pm.response.json();",
+              "pm.test('Hay al menos un producto con id, nombre y precio', function () {",
+              "  pm.expect(productos).to.be.an('array').that.is.not.empty;",
+              "  pm.expect(productos[0]).to.have.property('id');",
+              "  pm.expect(productos[0]).to.have.property('name');",
+              "  pm.expect(productos[0].price).to.be.a('number');",
+              "});",
+              "pm.collectionVariables.set('productId', productos[0].id);",
+              "pm.collectionVariables.set('productName', productos[0].name);",
+              "pm.collectionVariables.set('productPrice', productos[0].price);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 - Agregar el producto al carrito",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/carts/{{customerId}}/items",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"itemId\": \"{{productId}}\", \"quantity\": 1, \"unitPrice\": {{productPrice}}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('El carrito acepta el producto (201)', function () {",
+              "  pm.response.to.have.status(201);",
+              "});",
+              "pm.test('Devuelve el producto agregado', function () {",
+              "  pm.expect(pm.response.json().itemId).to.eql(pm.collectionVariables.get('productId'));",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 - El carrito tiene el producto",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/carts/{{customerId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('El carrito responde 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "pm.test('El producto quedo guardado en el carrito', function () {",
+              "  const ids = pm.response.json().items.map(function (i) { return i.itemId; });",
+              "  pm.expect(ids).to.include(pm.collectionVariables.get('productId'));",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 - Preparar el checkout con direccion y envio",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/checkout/{{customerId}}/update",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"items\": [{\"id\": \"{{productId}}\", \"name\": \"{{productName}}\", \"quantity\": 1, \"price\": {{productPrice}}}], \"shippingAddress\": {\"firstName\": \"Test\", \"lastName\": \"Newman\", \"address1\": \"Calle 123\", \"city\": \"Montevideo\", \"state\": \"Montevideo\", \"zip\": \"11000\", \"email\": \"test@example.com\"}, \"deliveryOptionToken\": \"priority-mail\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('El checkout se guarda (201)', function () {",
+              "  pm.response.to.have.status(201);",
+              "});",
+              "pm.test('El total suma producto, impuesto (5) y envio (10)', function () {",
+              "  const precio = Number(pm.collectionVariables.get('productPrice'));",
+              "  pm.expect(pm.response.json().total).to.eql(precio + 5 + 10);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 - Confirmar la compra",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/checkout/{{customerId}}/submit"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('La compra se confirma (201)', function () {",
+              "  pm.response.to.have.status(201);",
+              "});",
+              "const respuesta = pm.response.json();",
+              "pm.test('Se genera un numero de orden', function () {",
+              "  pm.expect(respuesta.orderId).to.be.a('string').and.not.empty;",
+              "});",
+              "pm.collectionVariables.set('orderId', respuesta.orderId);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "07 - La orden queda registrada",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/orders"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Ordenes responde 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "pm.test('La orden de la compra esta en la lista', function () {",
+              "  const ids = pm.response.json().map(function (o) { return o.id; });",
+              "  pm.expect(ids).to.include(pm.collectionVariables.get('orderId'));",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "customerId", "value": "" },
+    { "key": "productId", "value": "" },
+    { "key": "productName", "value": "" },
+    { "key": "productPrice", "value": "" },
+    { "key": "orderId", "value": "" }
+  ]
+}

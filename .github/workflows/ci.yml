@@ -1,0 +1,168 @@
+# Integracion continua de Tero.
+# Corre en cada Pull Request hacia main y en cada push a main.
+# Cada job es un control (quality gate): si cualquiera falla, el PR no se puede mergear.
+
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Si se suben commits nuevos al mismo PR, se cancela la corrida anterior.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Detecta credenciales en el codigo y en todo el historial de Git.
+  secretos:
+    name: secretos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Instalar Gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz | tar -xz gitleaks
+          ./gitleaks version
+      - name: Buscar secretos
+        run: ./gitleaks git --redact --verbose --exit-code 1 .
+
+  # SAST: analisis estatico de seguridad del codigo fuente.
+  sast:
+    name: sast
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar Semgrep
+        run: pip install semgrep
+      - name: Analizar el codigo
+        run: semgrep scan --config p/default --severity ERROR --error src
+
+  # SCA: vulnerabilidades en las dependencias (package-lock, yarn.lock, go.sum, requirements.txt).
+  # Bloquea CRITICAL y HIGH. Las que no tienen parche solo pasan si estan justificadas en .trivyignore.
+  sca:
+    name: sca
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Escanear dependencias
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln
+          severity: CRITICAL,HIGH
+          ignore-unfixed: false
+          exit-code: "1"
+          trivyignores: .trivyignore
+
+  # Calidad: SonarCloud con quality gate (bugs, vulnerabilidades, code smells, duplicacion).
+  calidad:
+    name: calidad
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Analizar con SonarCloud
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+
+  # Tests de integracion: levanta Tero completo con docker compose y corre la coleccion de Newman.
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Crear .env con credenciales de prueba
+        # Credenciales aleatorias que solo existen durante esta corrida.
+        run: |
+          {
+            echo "DB_USER=retail_user"
+            echo "DB_PASSWORD=$(openssl rand -hex 16)"
+            echo "ADMIN_USERNAME=ci-admin"
+            echo "ADMIN_PASSWORD=$(openssl rand -hex 16)"
+            echo "ADMIN_JWT_SECRET=$(openssl rand -hex 32)"
+          } > .env
+      - name: Levantar Tero
+        run: docker compose up --build -d
+      - name: Esperar a que Tero responda
+        run: |
+          for i in $(seq 1 40); do
+            if curl -fsS http://localhost:8080/api/catalog/products > /dev/null; then
+              echo "Tero responde"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Tero no respondio a tiempo"
+          docker compose ps
+          exit 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Tests de integracion (Newman)
+        run: |
+          npx --yes newman@6 run tests/newman/tero.postman_collection.json \
+            -e tests/newman/local.postman_environment.json \
+            --reporters cli,junit --reporter-junit-export newman-report.xml
+      - name: Guardar el reporte
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-report
+          path: newman-report.xml
+      - name: Logs de los servicios si algo fallo
+        if: failure()
+        run: docker compose logs
+      - name: Apagar Tero
+        if: always()
+        run: docker compose down -v
+
+  # Construye cada imagen y la escanea con Trivy. Una imagen con CRITICAL o HIGH frena el pipeline.
+  # En la Fase 4 este mismo escaneo va antes del push a ECR.
+  imagenes:
+    name: imagenes (${{ matrix.servicio }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - servicio: ui
+            carpeta: src/ui
+          - servicio: catalog
+            carpeta: src/catalog
+          - servicio: carts
+            carpeta: src/cart
+          - servicio: checkout
+            carpeta: src/checkout
+          - servicio: orders
+            carpeta: src/orders
+          - servicio: admin
+            carpeta: src/admin
+    steps:
+      - uses: actions/checkout@v4
+      - name: Construir la imagen
+        run: docker build -t "tero-${{ matrix.servicio }}:${{ github.sha }}" "${{ matrix.carpeta }}"
+      - name: Escanear la imagen
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: image
+          image-ref: tero-${{ matrix.servicio }}:${{ github.sha }}
+          severity: CRITICAL,HIGH
+          ignore-unfixed: false
+          exit-code: "1"
+          trivyignores: .trivyignore
