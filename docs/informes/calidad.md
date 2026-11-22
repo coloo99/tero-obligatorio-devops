@@ -36,6 +36,9 @@ La cobertura no se evalúa porque Tero no tiene tests unitarios (`sonar.coverage
 
 | Hallazgo | Servicio | Severidad | Acción |
 | --- | --- | --- | --- |
+| Descarga con curl que sigue redirecciones sin exigir HTTPS (`ci.yml`, instalación de Gitleaks) | Pipeline | Seguridad · media | Se fuerza HTTPS y TLS 1.2 (`--proto '=https' --tlsv1.2`) y que falle ante errores HTTP (`-f`) |
+| `pip install semgrep` sin versión fija y permitiendo paquetes fuente con scripts de instalación (`ci.yml`) | Pipeline | Seguridad · media (2 issues) | Versión fija `semgrep==1.186.0` e instalación solo desde paquetes binarios (`--only-binary=:all:`) |
+| `npx` instala paquetes en el momento y ejecuta sus scripts de instalación (`ci.yml`, tests de Newman) | Pipeline | Seguridad · media | Newman se instala en un paso aparte con versión fija `6.2.3` y `--ignore-scripts` |
 
 ## Interpretación y recomendaciones
 

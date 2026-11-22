@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
       - name: Instalar Gitleaks
         run: |
-          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz | tar -xz gitleaks
+          curl --proto '=https' --tlsv1.2 -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz | tar -xz gitleaks
           ./gitleaks version
       - name: Buscar secretos
         run: ./gitleaks git --redact --verbose --exit-code 1 .
@@ -45,7 +45,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Instalar Semgrep
-        run: pip install semgrep
+        run: "pip install --only-binary=:all: semgrep==1.186.0"
       - name: Analizar el codigo
         run: semgrep scan --config p/default --severity ERROR --error src
 
@@ -114,9 +114,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - name: Instalar Newman
+        run: npm install --global --ignore-scripts newman@6.2.3
       - name: Tests de integracion (Newman)
         run: |
-          npx --yes newman@6 run tests/newman/tero.postman_collection.json \
+          newman run tests/newman/tero.postman_collection.json \
             -e tests/newman/local.postman_environment.json \
             --reporters cli,junit --reporter-junit-export newman-report.xml
       - name: Guardar el reporte
