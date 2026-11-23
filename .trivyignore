@@ -1,0 +1,12 @@
+# Excepciones aceptadas del escaneo de Trivy (dependencias e imagenes).
+#
+# Regla del proyecto (punto 5.2 de la letra): el pipeline bloquea toda vulnerabilidad
+# CRITICAL o HIGH. Solo se agrega una aca si NO tiene parche disponible, y siempre con:
+#   - paquete y servicio afectado
+#   - por que el riesgo se considera aceptable
+#   - fecha de revision
+# Cada excepcion tambien se registra en docs/informes/seguridad.md.
+#
+# Formato:
+# # <paquete> (<servicio>): <descripcion corta>. <justificacion>. Revisar el <fecha>.
+# <ID de la vulnerabilidad, tal como la muestra Trivy>
