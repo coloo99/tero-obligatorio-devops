@@ -6,6 +6,8 @@ import crypto from 'crypto';
 import path from 'path';
 
 const app = express();
+// No anunciar "X-Powered-By: Express": no dar pistas de versión a un atacante.
+app.disable('x-powered-by');
 app.use(express.json());
 app.use(cookieParser());
 

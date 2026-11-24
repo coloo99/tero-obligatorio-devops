@@ -4,10 +4,25 @@ import { createProxyMiddleware } from 'http-proxy-middleware';
 
 const app = express();
 
-const CATALOG_URL  = process.env.RETAIL_UI_ENDPOINTS_CATALOG  || 'http://catalog:8080';
-const CARTS_URL    = process.env.RETAIL_UI_ENDPOINTS_CARTS    || 'http://carts:8080';
-const CHECKOUT_URL = process.env.RETAIL_UI_ENDPOINTS_CHECKOUT || 'http://checkout:8080';
-const ORDERS_URL   = process.env.RETAIL_UI_ENDPOINTS_ORDERS   || 'http://orders:8080';
+// No anunciar "X-Powered-By: Express": no dar pistas de versión a un atacante.
+app.disable('x-powered-by');
+
+// Las direcciones de los servicios internos se leen solo de variables de entorno
+// (docker-compose en local, definición de la tarea en ECS). Sin valor por defecto:
+// si falta alguna, el servicio no arranca.
+function requiredEnv(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    console.error(`Falta la variable de entorno obligatoria ${name}`);
+    process.exit(1);
+  }
+  return value;
+}
+
+const CATALOG_URL  = requiredEnv('RETAIL_UI_ENDPOINTS_CATALOG');
+const CARTS_URL    = requiredEnv('RETAIL_UI_ENDPOINTS_CARTS');
+const CHECKOUT_URL = requiredEnv('RETAIL_UI_ENDPOINTS_CHECKOUT');
+const ORDERS_URL   = requiredEnv('RETAIL_UI_ENDPOINTS_ORDERS');
 
 // Express strips the mount path before the proxy sees it.
 // pathRewrite re-adds the service prefix, stripping trailing slash on bare paths.
