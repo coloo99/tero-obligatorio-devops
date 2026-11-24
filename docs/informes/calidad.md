@@ -6,17 +6,17 @@ Análisis estático del código de Tero con SonarCloud (quality gate "Sonar way"
 
 | Métrica | Inicial (21/11/2026) | Final |
 | --- | --- | --- |
-| Quality gate (Sonar way) | No calculado (primer análisis) | |
-| Seguridad | 10 issues · nota C | |
-| Confiabilidad (bugs) | 31 issues · nota C | |
-| Mantenibilidad (code smells) | 6 issues · nota A | |
-| Security Hotspots | 0 | |
-| Duplicación | 0,0 % | |
-| Cobertura | Sin datos (no hay tests unitarios) | |
-| Riesgos de dependencias | 153 · nota D | |
-| Líneas de código | 3,7 mil | |
+| Quality gate (Sonar way) | No calculado (primer análisis) | Aprobado (main, 23/11/2026) |
+| Seguridad | 10 issues · nota C | 10 issues · nota C |
+| Confiabilidad (bugs) | 31 issues · nota C | 31 issues · nota C |
+| Mantenibilidad (code smells) | 6 issues · nota A | 6 issues · nota A |
+| Security Hotspots | 0 | 0 |
+| Duplicación | 0,0 % | 0,0 % |
+| Cobertura | Sin datos (no hay tests unitarios) | Sin datos (no hay tests unitarios) |
+| Riesgos de dependencias | 153 · nota D | No figura en el resumen de main; las dependencias vulnerables se controlan con Trivy (ver seguridad.md) |
+| Líneas de código | 3,7 mil | 3,2 mil |
 
-Evidencia: `docs/evidencia/fase-2/03-sonar-inicial.png` y `docs/evidencia/fase-2/04-sonar-inicial-detalle.png`.
+Evidencia: inicial en `docs/evidencia/fase-2/03-sonar-inicial.png` y `04-sonar-inicial-detalle.png`; final en `10-sonar-final.png` (código nuevo) y `10b-sonar-final.png` (código total).
 
 Nota: la página Overview muestra 41 issues y la suma de las tres categorías da 47, porque un mismo issue puede afectar a más de una categoría (por ejemplo, seguridad y confiabilidad).
 
@@ -32,7 +32,6 @@ La cobertura no se evalúa porque Tero no tiene tests unitarios (`sonar.coverage
 
 ## Hallazgos importantes
 
-<!-- Completar en el paso 2.6 con los issues más relevantes y qué se hizo con cada uno. -->
 
 | Hallazgo | Servicio | Severidad | Acción |
 | --- | --- | --- | --- |
@@ -42,4 +41,8 @@ La cobertura no se evalúa porque Tero no tiene tests unitarios (`sonar.coverage
 
 ## Interpretación y recomendaciones
 
-<!-- Completar en el paso 2.6: un párrafo que explique qué mostraron los resultados y qué se recomienda a Tero. -->
+El quality gate aprobó en el PR #44 y en `main`: el código nuevo de la Fase 2 tiene 0 issues, 0,0 % de duplicación y nota A en seguridad. El gate de "Sonar way" evalúa solo el código nuevo, así que no se puede empeorar lo que ya existe.
+
+Los números del código total no cambiaron (10 issues de seguridad, 31 de confiabilidad y 6 de mantenibilidad): son problemas heredados del código original de Tero y de los Dockerfiles, que esta fase no tenía como objetivo. Las líneas bajaron de 3,7 mil a 3,2 mil porque dejaron de analizarse archivos de terceros.
+
+Recomendaciones para Tero: corregir primero los 10 issues de seguridad, empezando por los de los Dockerfiles (instalaciones de npm y pip que permiten ejecutar scripts), y después los 31 de confiabilidad; mantener el gate sobre código nuevo para que la deuda no crezca; y agregar tests unitarios para poder medir cobertura.
