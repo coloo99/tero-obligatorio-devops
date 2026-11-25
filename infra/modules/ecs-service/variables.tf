@@ -9,7 +9,8 @@ variable "environment" {
 }
 
 variable "region" {
-  type = string
+  description = "Región de AWS"
+  type        = string
 }
 
 variable "image" {
@@ -18,20 +19,24 @@ variable "image" {
 }
 
 variable "cpu" {
-  type = number
+  description = "CPU de la tarea en unidades de ECS (256 = 0,25 vCPU)"
+  type        = number
 }
 
 variable "memory" {
-  type = number
+  description = "Memoria de la tarea en MB"
+  type        = number
 }
 
 variable "desired_count" {
-  type = number
+  description = "Cantidad de tareas que se mantienen corriendo"
+  type        = number
 }
 
 variable "container_port" {
-  type    = number
-  default = 8080
+  description = "Puerto en el que escucha el contenedor"
+  type        = number
+  default     = 8080
 }
 
 variable "environment_variables" {
@@ -47,23 +52,28 @@ variable "secrets" {
 }
 
 variable "cluster_id" {
-  type = string
+  description = "ID del cluster de ECS"
+  type        = string
 }
 
 variable "vpc_id" {
-  type = string
+  description = "ID de la VPC del ambiente"
+  type        = string
 }
 
 variable "subnet_ids" {
-  type = list(string)
+  description = "Subredes donde corren las tareas"
+  type        = list(string)
 }
 
 variable "security_group_id" {
-  type = string
+  description = "Security group de las tareas"
+  type        = string
 }
 
 variable "execution_role_arn" {
-  type = string
+  description = "Rol que usa ECS para bajar la imagen, leer secretos y escribir logs (LabRole)"
+  type        = string
 }
 
 variable "listener_arn" {
@@ -82,5 +92,6 @@ variable "path_patterns" {
 }
 
 variable "log_retention_days" {
-  type = number
+  description = "Días que se guardan los logs en CloudWatch"
+  type        = number
 }

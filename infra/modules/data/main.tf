@@ -24,9 +24,9 @@ resource "aws_db_subnet_group" "this" {
   subnet_ids = var.private_subnet_ids
 }
 
-# PostgreSQL 15 en adelante exige SSL por defecto en RDS. orders se conecta con
-# sslmode=disable (código original de Tero), así que se desactiva la exigencia.
-# El tráfico no sale de la VPC.
+# PostgreSQL 15 en adelante exige SSL por defecto en RDS. catalog y orders se
+# conectan con sslmode=disable y admin sin SSL (código original de Tero), así que
+# se desactiva la exigencia. El tráfico no sale de la VPC.
 resource "aws_db_parameter_group" "this" {
   name   = "${var.name}-postgres16"
   family = "postgres16"

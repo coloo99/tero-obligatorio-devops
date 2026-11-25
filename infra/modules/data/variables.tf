@@ -9,15 +9,18 @@ variable "environment" {
 }
 
 variable "region" {
-  type = string
+  description = "Región de AWS"
+  type        = string
 }
 
 variable "vpc_id" {
-  type = string
+  description = "ID de la VPC del ambiente"
+  type        = string
 }
 
 variable "private_subnet_ids" {
-  type = list(string)
+  description = "Subredes privadas donde van RDS y Redis"
+  type        = list(string)
 }
 
 variable "tasks_security_group_id" {
@@ -37,27 +40,33 @@ variable "db_username" {
 }
 
 variable "db_instance_class" {
-  type = string
+  description = "Tamaño de la instancia de RDS"
+  type        = string
 }
 
 variable "db_multi_az" {
-  type = bool
+  description = "RDS con réplica en otra zona (false en el Learner Lab)"
+  type        = bool
 }
 
 variable "db_backup_retention_days" {
-  type = number
+  description = "Días que se guardan los respaldos automáticos de RDS (0 = sin respaldos)"
+  type        = number
 }
 
 variable "db_deletion_protection" {
-  type = bool
+  description = "Impide borrar la base con destroy (false en el Learner Lab)"
+  type        = bool
 }
 
 variable "redis_node_type" {
-  type = string
+  description = "Tamaño del nodo de ElastiCache"
+  type        = string
 }
 
 variable "log_retention_days" {
-  type = number
+  description = "Días que se guardan los logs en CloudWatch"
+  type        = number
 }
 
 variable "init_sql" {

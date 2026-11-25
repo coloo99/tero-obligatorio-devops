@@ -9,8 +9,9 @@ variable "environment" {
 }
 
 variable "region" {
-  type    = string
-  default = "us-east-1"
+  description = "Región de AWS"
+  type        = string
+  default     = "us-east-1"
 }
 
 variable "azs" {
@@ -45,25 +46,31 @@ variable "task_memory" {
 }
 
 variable "db_instance_class" {
-  type = string
+  description = "Tamaño de la instancia de RDS"
+  type        = string
 }
 
 variable "db_multi_az" {
-  type = bool
+  description = "RDS con réplica en otra zona (false en el Learner Lab)"
+  type        = bool
 }
 
 variable "db_backup_retention_days" {
-  type = number
+  description = "Días que se guardan los respaldos automáticos de RDS (0 = sin respaldos)"
+  type        = number
 }
 
 variable "db_deletion_protection" {
-  type = bool
+  description = "Impide borrar la base con destroy (false en el Learner Lab)"
+  type        = bool
 }
 
 variable "redis_node_type" {
-  type = string
+  description = "Tamaño del nodo de ElastiCache"
+  type        = string
 }
 
 variable "log_retention_days" {
-  type = number
+  description = "Días que se guardan los logs en CloudWatch"
+  type        = number
 }
