@@ -1,9 +1,11 @@
-# Etapa 1: instalar dependencias en un entorno virtual
+# Etapa 1: instalar dependencias en un entorno virtual.
+# requirements.txt es el lock (versiones exactas con hash, generado desde requirements.in):
+# --require-hashes rechaza cualquier paquete alterado y --only-binary evita ejecutar setup.py.
 FROM python:3.12-alpine AS build
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --only-binary=:all: --require-hashes -r requirements.txt
 
 # Etapa 2: imagen final con solo el entorno virtual y el código, usuario no-root.
 # Alpine en lugar de Debian slim: menos paquetes del sistema y menos CVE sin parche.
