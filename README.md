@@ -38,6 +38,20 @@ docker compose up --build <servicio>
 docker compose logs -f <servicio>
 ```
 
+## Preparación única en AWS
+
+El estado de Terraform se guarda en un bucket de S3. Es el único recurso que se crea a mano, una sola vez, antes del primer `terraform init`, y no se borra nunca. Se crea con versionado (para poder volver a un estado anterior) y con todo el acceso público bloqueado; S3 lo cifra por defecto (SSE-S3).
+
+```bash
+bucket="tero-tfstate-$(gh api user --jq .login | tr '[:upper:]' '[:lower:]')"
+aws s3api create-bucket --bucket "$bucket" --region us-east-1
+aws s3api put-bucket-versioning --bucket "$bucket" --versioning-configuration Status=Enabled
+aws s3api put-public-access-block --bucket "$bucket" --public-access-block-configuration "BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"
+aws s3api get-bucket-encryption --bucket "$bucket"
+```
+
+Bucket del proyecto: `tero-tfstate-coloo99` (región `us-east-1`).
+
 ---
 
 ## Arquitectura de microservicios
@@ -127,10 +141,10 @@ docker compose logs -f <servicio>
 ### UI
 | Variable                        | Descripción                  | Default               |
 |---------------------------------|------------------------------|-----------------------|
-| `RETAIL_UI_ENDPOINTS_CATALOG`   | URL del servicio catalog     | `http://catalog:8080` |
-| `RETAIL_UI_ENDPOINTS_CARTS`     | URL del servicio cart        | `http://carts:8080`   |
-| `RETAIL_UI_ENDPOINTS_CHECKOUT`  | URL del servicio checkout    | `http://checkout:8080`|
-| `RETAIL_UI_ENDPOINTS_ORDERS`    | URL del servicio orders      | `http://orders:8080`  |
+| `RETAIL_UI_ENDPOINTS_CATALOG`   | URL del servicio catalog     | — (obligatoria; en local la define `docker-compose.yml`) |
+| `RETAIL_UI_ENDPOINTS_CARTS`     | URL del servicio cart        | — (obligatoria; en local la define `docker-compose.yml`) |
+| `RETAIL_UI_ENDPOINTS_CHECKOUT`  | URL del servicio checkout    | — (obligatoria; en local la define `docker-compose.yml`) |
+| `RETAIL_UI_ENDPOINTS_ORDERS`    | URL del servicio orders      | — (obligatoria; en local la define `docker-compose.yml`) |
 
 ### Catalog / Orders / Cart
 | Variable                               | Descripción           | Default          |
