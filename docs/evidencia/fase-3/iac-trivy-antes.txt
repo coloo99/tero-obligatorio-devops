@@ -1,0 +1,486 @@
+iac	Set up job	﻿2026-11-25T22:56:00.3044207Z Current runner version: '2.338.2'
+iac	Set up job	2026-11-25T22:56:00.3066047Z ##[group]Runner Image Provisioner
+iac	Set up job	2026-11-25T22:56:00.3066969Z Hosted Compute Agent
+iac	Set up job	2026-11-25T22:56:00.3067514Z Version: 20261111.635
+iac	Set up job	2026-11-25T22:56:00.3068056Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+iac	Set up job	2026-11-25T22:56:00.3068754Z Build Date: 2026-11-11T01:49:01Z
+iac	Set up job	2026-11-25T22:56:00.3069394Z Worker ID: {0de3535d-2281-4ed0-ad72-d8a610d28892}
+iac	Set up job	2026-11-25T22:56:00.3069998Z Region: us-west-2
+iac	Set up job	2026-11-25T22:56:00.3070455Z Cloud: AWS
+iac	Set up job	2026-11-25T22:56:00.3070869Z ##[endgroup]
+iac	Set up job	2026-11-25T22:56:00.3072193Z ##[group]Operating System
+iac	Set up job	2026-11-25T22:56:00.3072695Z Ubuntu
+iac	Set up job	2026-11-25T22:56:00.3073350Z 26.04.1
+iac	Set up job	2026-11-25T22:56:00.3073826Z LTS
+iac	Set up job	2026-11-25T22:56:00.3074227Z ##[endgroup]
+iac	Set up job	2026-11-25T22:56:00.3074682Z ##[group]Runner Image
+iac	Set up job	2026-11-25T22:56:00.3075233Z Image: ubuntu-26.04
+iac	Set up job	2026-11-25T22:56:00.3075712Z Version: 20261116.88.1
+iac	Set up job	2026-11-25T22:56:00.3076742Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261116.88/images/ubuntu/Ubuntu2604-Readme.md
+iac	Set up job	2026-11-25T22:56:00.3078167Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261116.88
+iac	Set up job	2026-11-25T22:56:00.3078996Z ##[endgroup]
+iac	Set up job	2026-11-25T22:56:00.3079893Z ##[group]GITHUB_TOKEN Permissions
+iac	Set up job	2026-11-25T22:56:00.3082017Z Contents: read
+iac	Set up job	2026-11-25T22:56:00.3082550Z Metadata: read
+iac	Set up job	2026-11-25T22:56:00.3083197Z ##[endgroup]
+iac	Set up job	2026-11-25T22:56:00.3085028Z Secret source: Actions
+iac	Set up job	2026-11-25T22:56:00.3085763Z Cache mode: write
+iac	Set up job	2026-11-25T22:56:00.3086263Z Prepare workflow directory
+iac	Set up job	2026-11-25T22:56:00.3317194Z Prepare all required actions
+iac	Set up job	2026-11-25T22:56:00.3353645Z Getting action download info
+iac	Set up job	2026-11-25T22:56:00.6832463Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+iac	Set up job	2026-11-25T22:56:02.3883408Z Download action repository 'aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25' (SHA:ed142fd0673e97e23eac54620cfb913e5ce36c25)
+iac	Set up job	2026-11-25T22:56:02.8244396Z Getting action download info
+iac	Set up job	2026-11-25T22:56:02.9689845Z Download action repository 'aquasecurity/setup-trivy@3fb12ec12f41e471780db15c232d5dd185dcb514' (SHA:3fb12ec12f41e471780db15c232d5dd185dcb514)
+iac	Set up job	2026-11-25T22:56:03.1549539Z Download action repository 'actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae' (SHA:27d5ce7f107fe9357f9df03efb73ab90386fccae)
+iac	Set up job	2026-11-25T22:56:03.3735149Z Getting action download info
+iac	Set up job	2026-11-25T22:56:03.5027672Z Download action repository 'actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb' (SHA:9255dc7a253b0ccc959486e2bca901246202afeb)
+iac	Set up job	2026-11-25T22:56:03.7526425Z Download action repository 'actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8' (SHA:8e8c483db84b4bee98b60c0593521ed34d9990e8)
+iac	Set up job	2026-11-25T22:56:03.9122227Z Complete job name: iac
+iac	Run actions/checkout@v4	﻿2026-11-25T22:56:03.9688956Z ##[group]Run actions/checkout@v4
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9689481Z with:
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9689828Z   repository: coloo99/tero-obligatorio-devops
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9691870Z   token: ***
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9692146Z   ssh-strict: true
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9692437Z   ssh-user: git
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9692711Z   persist-credentials: true
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9693362Z   clean: true
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9693658Z   sparse-checkout-cone-mode: true
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9693954Z   fetch-depth: 1
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9694226Z   fetch-tags: false
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9694490Z   show-progress: true
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9694806Z   lfs: false
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9695046Z   submodules: false
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9695291Z   set-safe-directory: true
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9695610Z   allow-unsafe-pr-checkout: false
+iac	Run actions/checkout@v4	2026-11-25T22:56:03.9696063Z ##[endgroup]
+iac	Run actions/checkout@v4	2026-11-25T22:56:07.9642219Z Syncing repository: coloo99/tero-obligatorio-devops
+iac	Run actions/checkout@v4	2026-11-25T22:56:07.9644455Z ##[group]Getting Git version info
+iac	Run actions/checkout@v4	2026-11-25T22:56:07.9645124Z Working directory is '/home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops'
+iac	Run actions/checkout@v4	2026-11-25T22:56:07.9646140Z [command]/usr/bin/git version
+iac	Run actions/checkout@v4	2026-11-25T22:56:07.9653995Z git version 2.56.1
+iac	Run actions/checkout@v4	2026-11-25T22:56:07.9667814Z ##[endgroup]
+iac	Run actions/checkout@v4	2026-11-25T22:56:07.9677579Z Temporarily overriding HOME='/home/runner/work/_temp/e7d43e94-964d-47ce-9ecc-0cca3604d71e' before making global git config changes
+iac	Run actions/checkout@v4	2026-11-25T22:56:07.9678701Z Adding repository directory to the temporary git global config as a safe directory
+iac	Run actions/checkout@v4	2026-11-25T22:56:07.9681265Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0041440Z Deleting the contents of '/home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops'
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0045758Z ##[group]Initializing the repository
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0049146Z [command]/usr/bin/git init /home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0584962Z hint: Using 'master' as the name for the initial branch. This default branch name
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0585654Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0586089Z hint: to use in all of your new repositories, which will suppress this warning,
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0586529Z hint: call:
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0586736Z hint:
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0587022Z hint: 	git config --global init.defaultBranch <name>
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0587332Z hint:
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0587619Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0588033Z hint: 'development'. The just-created branch can be renamed via this command:
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0588348Z hint:
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0588542Z hint: 	git branch -m <name>
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0588806Z hint:
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0589092Z hint: Disable this message with "git config set advice.defaultBranchName false"
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0608851Z Initialized empty Git repository in /home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops/.git/
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0617218Z [command]/usr/bin/git remote add origin https://github.com/coloo99/tero-obligatorio-devops
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0680983Z ##[endgroup]
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0681432Z ##[group]Disabling automatic garbage collection
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0685160Z [command]/usr/bin/git config --local gc.auto 0
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0707246Z ##[endgroup]
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0707669Z ##[group]Setting up auth
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0711881Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.0736145Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.3388989Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.3413335Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.3592397Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.3617239Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.3791556Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.3819630Z ##[endgroup]
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.3820366Z ##[group]Fetching the repository
+iac	Run actions/checkout@v4	2026-11-25T22:56:08.3826689Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4f9ed631fc33422834258d7bcb409645a5578afd:refs/remotes/origin/feature/terraform
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.2549181Z From https://github.com/coloo99/tero-obligatorio-devops
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.2549984Z  * [new ref]         4f9ed631fc33422834258d7bcb409645a5578afd -> origin/feature/terraform
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.2553570Z ##[endgroup]
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.2554202Z ##[group]Determining the checkout info
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.2556429Z ##[endgroup]
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.2561385Z [command]/usr/bin/git sparse-checkout disable
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.2616046Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.2638159Z ##[group]Checking out the ref
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.2641849Z [command]/usr/bin/git checkout --progress --force -B feature/terraform refs/remotes/origin/feature/terraform
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.3086793Z Switched to a new branch 'feature/terraform'
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.3096127Z branch 'feature/terraform' set up to track 'origin/feature/terraform'.
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.3104011Z ##[endgroup]
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.3154775Z [command]/usr/bin/git log -1 --format=%H
+iac	Run actions/checkout@v4	2026-11-25T22:56:09.3171297Z 4f9ed631fc33422834258d7bcb409645a5578afd
+iac	Escanear el Terraform	﻿2026-11-25T22:56:09.3513510Z ##[group]Run aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25
+iac	Escanear el Terraform	2026-11-25T22:56:09.3513943Z with:
+iac	Escanear el Terraform	2026-11-25T22:56:09.3514174Z   scan-type: config
+iac	Escanear el Terraform	2026-11-25T22:56:09.3514405Z   scan-ref: infra
+iac	Escanear el Terraform	2026-11-25T22:56:09.3514628Z   severity: CRITICAL,HIGH
+iac	Escanear el Terraform	2026-11-25T22:56:09.3514890Z   exit-code: 1
+iac	Escanear el Terraform	2026-11-25T22:56:09.3515115Z   ignore-unfixed: false
+iac	Escanear el Terraform	2026-11-25T22:56:09.3515385Z   vuln-type: os,library
+iac	Escanear el Terraform	2026-11-25T22:56:09.3515667Z   format: table
+iac	Escanear el Terraform	2026-11-25T22:56:09.3516022Z   cache-dir: /home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops/.cache/trivy
+iac	Escanear el Terraform	2026-11-25T22:56:09.3516434Z   list-all-pkgs: false
+iac	Escanear el Terraform	2026-11-25T22:56:09.3516752Z   version: v0.70.0
+iac	Escanear el Terraform	2026-11-25T22:56:09.3516959Z   cache: true
+iac	Escanear el Terraform	2026-11-25T22:56:09.3517301Z   skip-setup-trivy: false
+iac	Escanear el Terraform	2026-11-25T22:56:09.3519169Z   token-setup-trivy: ***
+iac	Escanear el Terraform	2026-11-25T22:56:09.3519432Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:09.3570412Z ##[start-action display=Install Trivy;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy]
+iac	Escanear el Terraform	2026-11-25T22:56:09.3670548Z ##[group]Run aquasecurity/setup-trivy@3fb12ec12f41e471780db15c232d5dd185dcb514
+iac	Escanear el Terraform	2026-11-25T22:56:09.3670926Z with:
+iac	Escanear el Terraform	2026-11-25T22:56:09.3671151Z   version: v0.70.0
+iac	Escanear el Terraform	2026-11-25T22:56:09.3671384Z   cache: true
+iac	Escanear el Terraform	2026-11-25T22:56:09.3673498Z   token: ***
+iac	Escanear el Terraform	2026-11-25T22:56:09.3673769Z   path: $HOME/.local/bin
+iac	Escanear el Terraform	2026-11-25T22:56:09.3674038Z   github-server-url: https://github.com
+iac	Escanear el Terraform	2026-11-25T22:56:09.3674340Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:09.3681236Z ##[start-action display=Binary dir;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.binary-dir]
+iac	Escanear el Terraform	2026-11-25T22:56:09.3707030Z ##[group]Run echo "dir=$HOME/.local/bin/trivy-bin" >> $GITHUB_OUTPUT
+iac	Escanear el Terraform	2026-11-25T22:56:09.3707584Z ^[[36;1mecho "dir=$HOME/.local/bin/trivy-bin" >> $GITHUB_OUTPUT^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:09.3732215Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+iac	Escanear el Terraform	2026-11-25T22:56:09.3732555Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:09.3817076Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.binary-dir;outcome=success;conclusion=success;duration_ms=13]
+iac	Escanear el Terraform	2026-11-25T22:56:09.3820962Z ##[start-action display=Check the version for caching;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run]
+iac	Escanear el Terraform	2026-11-25T22:56:09.3827554Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run;outcome=skipped;conclusion=skipped;duration_ms=0]
+iac	Escanear el Terraform	2026-11-25T22:56:09.3829648Z ##[start-action display=Restore Trivy binary from cache;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.cache]
+iac	Escanear el Terraform	2026-11-25T22:56:09.3870729Z ##[group]Run actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb
+iac	Escanear el Terraform	2026-11-25T22:56:09.3871075Z with:
+iac	Escanear el Terraform	2026-11-25T22:56:09.3871329Z   path: /home/runner/.local/bin/trivy-bin
+iac	Escanear el Terraform	2026-11-25T22:56:09.3871612Z   key: trivy-binary-v0.70.0-Linux-X64
+iac	Escanear el Terraform	2026-11-25T22:56:09.3871889Z   enableCrossOsArchive: false
+iac	Escanear el Terraform	2026-11-25T22:56:09.3872198Z   fail-on-cache-miss: false
+iac	Escanear el Terraform	2026-11-25T22:56:09.3872429Z   lookup-only: false
+iac	Escanear el Terraform	2026-11-25T22:56:09.3872670Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:09.8516488Z Cache hit for: trivy-binary-v0.70.0-Linux-X64
+iac	Escanear el Terraform	2026-11-25T22:56:11.2594456Z Received 0 of 43744491 (0.0%), 0.0 MBs/sec
+iac	Escanear el Terraform	2026-11-25T22:56:12.2325762Z Received 43744491 of 43744491 (100.0%), 21.1 MBs/sec
+iac	Escanear el Terraform	2026-11-25T22:56:12.2326326Z Cache Size: ~42 MB (43744491 B)
+iac	Escanear el Terraform	2026-11-25T22:56:12.2357867Z [command]/usr/bin/tar -xf /home/runner/work/_temp/93a9c8bc-f107-42ee-b6fb-e0756055328f/cache.tzst -P -C /home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops --use-compress-program unzstd
+iac	Escanear el Terraform	2026-11-25T22:56:12.4000190Z Cache restored successfully
+iac	Escanear el Terraform	2026-11-25T22:56:12.7294681Z Cache restored from key: trivy-binary-v0.70.0-Linux-X64
+iac	Escanear el Terraform	2026-11-25T22:56:12.7359451Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.cache;outcome=success;conclusion=success;duration_ms=3352]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7363460Z ##[start-action display=Checkout install script;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__actions_checkout]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7370921Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__actions_checkout;outcome=skipped;conclusion=skipped;duration_ms=0]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7374081Z ##[start-action display=Install Trivy;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run_2]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7379000Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7381097Z ##[start-action display=Add Trivy binary to $GITHUB_PATH;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run_3]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7397690Z ##[group]Run echo /home/runner/.local/bin/trivy-bin >> $GITHUB_PATH
+iac	Escanear el Terraform	2026-11-25T22:56:12.7398106Z ^[[36;1mecho /home/runner/.local/bin/trivy-bin >> $GITHUB_PATH^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:12.7416090Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+iac	Escanear el Terraform	2026-11-25T22:56:12.7416480Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7459123Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run_3;outcome=success;conclusion=success;duration_ms=7]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7461910Z ##[start-action display=Save Trivy binary to cache;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__actions_cache]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7469553Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__actions_cache;outcome=skipped;conclusion=skipped;duration_ms=0]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7480401Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy;outcome=success;conclusion=success;duration_ms=3390]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7482512Z ##[start-action display=Get current date;id=__aquasecurity_trivy-action.date]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7496277Z ##[group]Run echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+iac	Escanear el Terraform	2026-11-25T22:56:12.7496667Z ^[[36;1mecho "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:12.7514498Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+iac	Escanear el Terraform	2026-11-25T22:56:12.7514882Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7585904Z ##[end-action id=__aquasecurity_trivy-action.date;outcome=success;conclusion=success;duration_ms=10]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7587861Z ##[start-action display=Restore DB from cache;id=__aquasecurity_trivy-action.__actions_cache]
+iac	Escanear el Terraform	2026-11-25T22:56:12.7621277Z ##[group]Run actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
+iac	Escanear el Terraform	2026-11-25T22:56:12.7621617Z with:
+iac	Escanear el Terraform	2026-11-25T22:56:12.7622025Z   path: /home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops/.cache/trivy
+iac	Escanear el Terraform	2026-11-25T22:56:12.7622431Z   key: cache-trivy-2026-11-25
+iac	Escanear el Terraform	2026-11-25T22:56:12.7622686Z   restore-keys: cache-trivy-
+iac	Escanear el Terraform	2026-11-25T22:56:12.7623190Z   enableCrossOsArchive: false
+iac	Escanear el Terraform	2026-11-25T22:56:12.7623454Z   fail-on-cache-miss: false
+iac	Escanear el Terraform	2026-11-25T22:56:12.7623733Z   lookup-only: false
+iac	Escanear el Terraform	2026-11-25T22:56:12.7623963Z   save-always: false
+iac	Escanear el Terraform	2026-11-25T22:56:12.7624222Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:13.1287582Z Cache hit for: cache-trivy-2026-11-25
+iac	Escanear el Terraform	2026-11-25T22:56:14.4708953Z Received 0 of 102069759 (0.0%), 0.0 MBs/sec
+iac	Escanear el Terraform	2026-11-25T22:56:15.4706220Z Received 79691776 of 102069759 (78.1%), 38.0 MBs/sec
+iac	Escanear el Terraform	2026-11-25T22:56:15.6347565Z Received 102069759 of 102069759 (100.0%), 45.0 MBs/sec
+iac	Escanear el Terraform	2026-11-25T22:56:15.6349135Z Cache Size: ~97 MB (102069759 B)
+iac	Escanear el Terraform	2026-11-25T22:56:15.6407363Z [command]/usr/bin/tar -xf /home/runner/work/_temp/d26cba04-83f8-4823-b6c1-d43e9e5aaea7/cache.tzst -P -C /home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops --use-compress-program unzstd
+iac	Escanear el Terraform	2026-11-25T22:56:16.6418358Z Cache restored successfully
+iac	Escanear el Terraform	2026-11-25T22:56:16.6515904Z Cache restored from key: cache-trivy-2026-11-25
+iac	Escanear el Terraform	2026-11-25T22:56:16.6609238Z ##[end-action id=__aquasecurity_trivy-action.__actions_cache;outcome=success;conclusion=success;duration_ms=3902]
+iac	Escanear el Terraform	2026-11-25T22:56:16.6618227Z ##[start-action display=Set GitHub Path;id=__aquasecurity_trivy-action.__run]
+iac	Escanear el Terraform	2026-11-25T22:56:16.6697206Z ##[group]Run echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+iac	Escanear el Terraform	2026-11-25T22:56:16.6697596Z ^[[36;1mecho "$GITHUB_ACTION_PATH" >> $GITHUB_PATH^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.6718221Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+iac	Escanear el Terraform	2026-11-25T22:56:16.6718616Z env:
+iac	Escanear el Terraform	2026-11-25T22:56:16.6719043Z   GITHUB_ACTION_PATH: /home/runner/work/_actions/aquasecurity/trivy-action/ed142fd0673e97e23eac54620cfb913e5ce36c25
+iac	Escanear el Terraform	2026-11-25T22:56:16.6719709Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:16.6811699Z ##[end-action id=__aquasecurity_trivy-action.__run;outcome=success;conclusion=success;duration_ms=19]
+iac	Escanear el Terraform	2026-11-25T22:56:16.6814085Z ##[start-action display=Clear Trivy Envs file;id=__aquasecurity_trivy-action.__run_2]
+iac	Escanear el Terraform	2026-11-25T22:56:16.7080409Z ##[group]Run rm -f trivy_envs.txt
+iac	Escanear el Terraform	2026-11-25T22:56:16.7080988Z ^[[36;1mrm -f trivy_envs.txt^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7081336Z ^[[36;1mtouch trivy_envs.txt^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7104685Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+iac	Escanear el Terraform	2026-11-25T22:56:16.7105149Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:16.7222024Z ##[end-action id=__aquasecurity_trivy-action.__run_2;outcome=success;conclusion=success;duration_ms=40]
+iac	Escanear el Terraform	2026-11-25T22:56:16.7227141Z ##[start-action display=Set Trivy environment variables;id=__aquasecurity_trivy-action.__run_3]
+iac	Escanear el Terraform	2026-11-25T22:56:16.7538173Z ##[group]Run # Note: There is currently no way to distinguish between undefined variables and empty strings in GitHub Actions.
+iac	Escanear el Terraform	2026-11-25T22:56:16.7538939Z ^[[36;1m# Note: There is currently no way to distinguish between undefined variables and empty strings in GitHub Actions.^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7539519Z ^[[36;1m# This limitation affects how we handle default values and empty inputs.^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7539979Z ^[[36;1m# For more information, see: https://github.com/actions/runner/issues/924^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7540353Z ^[[36;1m^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7540683Z ^[[36;1m# The following logic implements the configuration priority described in the README:^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7541272Z ^[[36;1m#^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7541487Z ^[[36;1m# Inputs^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7541711Z ^[[36;1m# Environment Variables^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7542015Z ^[[36;1m# Config File^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7542251Z ^[[36;1m# Defaults^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7542518Z ^[[36;1m#^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7543082Z ^[[36;1m# As noted above defaults are awkward to handle as GitHub Actions will inject those values as the input^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7543642Z ^[[36;1m# if the caller doesn't provide them, thus if the input matches the default we don't set it as we^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7544205Z ^[[36;1m# can't tell the difference.  Plus if we did set it when it was the default value then it could potentially^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7544787Z ^[[36;1m# override an external environment variable, or something in the callers configuration file, which then wouldn't^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7545307Z ^[[36;1m# match the configuration priority that is documented.^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7545622Z ^[[36;1mset_env_var_if_provided() {^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7545924Z ^[[36;1m  local var_name="$1"^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7546179Z ^[[36;1m  local input_value="$2"^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7546457Z ^[[36;1m  local default_value="$3"^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7546742Z ^[[36;1m^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7547016Z ^[[36;1m  if [ -n "$input_value" ] && [ "$input_value" != "$default_value" ]; then^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7547472Z ^[[36;1m    # If action was provided with explicit input by the caller set that^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7547924Z ^[[36;1m    # Use printf %q to safely escape special characters and prevent command injection^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7548394Z ^[[36;1m    printf 'export %s=%q\n' "$var_name" "$input_value" >> trivy_envs.txt^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7548717Z ^[[36;1m  fi^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7549086Z ^[[36;1m}^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7549347Z ^[[36;1m^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7549614Z ^[[36;1m# Set environment variables, handling those with default values^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7550136Z ^[[36;1m# cf. https://aquasecurity.github.io/trivy/latest/docs/configuration/#environment-variables^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7550591Z ^[[36;1mset_env_var_if_provided "TRIVY_INPUT" "$INPUT_INPUT" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7550995Z ^[[36;1mset_env_var_if_provided "TRIVY_EXIT_CODE" "$INPUT_EXIT_CODE" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7551423Z ^[[36;1mset_env_var_if_provided "TRIVY_IGNORE_UNFIXED" "$INPUT_IGNORE_UNFIXED" "false"^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7551937Z ^[[36;1mset_env_var_if_provided "TRIVY_PKG_TYPES" "$INPUT_VULN_TYPE" "os,library"^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7552450Z ^[[36;1mset_env_var_if_provided "TRIVY_SEVERITY" "$INPUT_SEVERITY" "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7553052Z ^[[36;1mset_env_var_if_provided "TRIVY_FORMAT" "$INPUT_FORMAT" "table"^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7553566Z ^[[36;1mset_env_var_if_provided "TRIVY_TEMPLATE" "$INPUT_TEMPLATE" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7553945Z ^[[36;1mset_env_var_if_provided "TRIVY_OUTPUT" "$INPUT_OUTPUT" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7554344Z ^[[36;1mset_env_var_if_provided "TRIVY_SKIP_DIRS" "$INPUT_SKIP_DIRS" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7554733Z ^[[36;1mset_env_var_if_provided "TRIVY_SKIP_FILES" "$INPUT_SKIP_FILES" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7555132Z ^[[36;1mset_env_var_if_provided "TRIVY_TIMEOUT" "$INPUT_TIMEOUT" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7555571Z ^[[36;1mset_env_var_if_provided "TRIVY_IGNORE_POLICY" "$INPUT_IGNORE_POLICY" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7555952Z ^[[36;1mset_env_var_if_provided "TRIVY_QUIET" "$INPUT_HIDE_PROGRESS" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7556408Z ^[[36;1mset_env_var_if_provided "TRIVY_LIST_ALL_PKGS" "$INPUT_LIST_ALL_PKGS" "false"^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7556819Z ^[[36;1mset_env_var_if_provided "TRIVY_SCANNERS" "$INPUT_SCANNERS" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7557520Z ^[[36;1mset_env_var_if_provided "TRIVY_CONFIG" "$INPUT_TRIVY_CONFIG" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7557905Z ^[[36;1mset_env_var_if_provided "TRIVY_TF_VARS" "$INPUT_TF_VARS" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7558327Z ^[[36;1mset_env_var_if_provided "TRIVY_DOCKER_HOST" "$INPUT_DOCKER_HOST" ""^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7575162Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+iac	Escanear el Terraform	2026-11-25T22:56:16.7575497Z env:
+iac	Escanear el Terraform	2026-11-25T22:56:16.7575763Z   INPUT_INPUT: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7576005Z   INPUT_EXIT_CODE: 1
+iac	Escanear el Terraform	2026-11-25T22:56:16.7576272Z   INPUT_IGNORE_UNFIXED: false
+iac	Escanear el Terraform	2026-11-25T22:56:16.7576566Z   INPUT_VULN_TYPE: os,library
+iac	Escanear el Terraform	2026-11-25T22:56:16.7576823Z   INPUT_SEVERITY: CRITICAL,HIGH
+iac	Escanear el Terraform	2026-11-25T22:56:16.7577081Z   INPUT_FORMAT: table
+iac	Escanear el Terraform	2026-11-25T22:56:16.7577386Z   INPUT_TEMPLATE: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7577652Z   INPUT_OUTPUT: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7577971Z   INPUT_SKIP_DIRS: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7578243Z   INPUT_SKIP_FILES: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7578531Z   INPUT_TIMEOUT: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7579024Z   INPUT_IGNORE_POLICY: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7579306Z   INPUT_HIDE_PROGRESS: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7579609Z   INPUT_LIST_ALL_PKGS: false
+iac	Escanear el Terraform	2026-11-25T22:56:16.7579967Z   INPUT_SCANNERS: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7580320Z   INPUT_TRIVY_CONFIG: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7580706Z   INPUT_TF_VARS: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7581152Z   INPUT_DOCKER_HOST: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7581490Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:16.7654751Z ##[end-action id=__aquasecurity_trivy-action.__run_3;outcome=success;conclusion=success;duration_ms=42]
+iac	Escanear el Terraform	2026-11-25T22:56:16.7658079Z ##[start-action display=Run Trivy;id=__aquasecurity_trivy-action.__run_4]
+iac	Escanear el Terraform	2026-11-25T22:56:16.7958867Z ##[group]Run entrypoint.sh
+iac	Escanear el Terraform	2026-11-25T22:56:16.7959181Z ^[[36;1mentrypoint.sh^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:16.7975819Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+iac	Escanear el Terraform	2026-11-25T22:56:16.7976350Z env:
+iac	Escanear el Terraform	2026-11-25T22:56:16.7976573Z   INPUT_SCAN_TYPE: config
+iac	Escanear el Terraform	2026-11-25T22:56:16.7976830Z   INPUT_IMAGE_REF: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7977113Z   INPUT_SCAN_REF: infra
+iac	Escanear el Terraform	2026-11-25T22:56:16.7977357Z   INPUT_TRIVYIGNORES: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7977627Z   INPUT_GITHUB_PAT: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7978004Z   INPUT_LIMIT_SEVERITIES_FOR_SARIF: 
+iac	Escanear el Terraform	2026-11-25T22:56:16.7978422Z   TRIVY_CACHE_DIR: /home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops/.cache/trivy
+iac	Escanear el Terraform	2026-11-25T22:56:16.7978852Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:16.8055644Z Running Trivy with options: trivy config infra
+iac	Escanear el Terraform	2026-11-25T22:56:16.8482066Z 2026-11-25T22:56:16Z	INFO	[misconfig] Misconfiguration scanning is enabled
+iac	Escanear el Terraform	2026-11-25T22:56:16.8483113Z 2026-11-25T22:56:16Z	INFO	[checks-client] Need to update the checks bundle
+iac	Escanear el Terraform	2026-11-25T22:56:16.8483760Z 2026-11-25T22:56:16Z	INFO	[checks-client] Downloading the checks bundle...
+iac	Escanear el Terraform	2026-11-25T22:56:18.8386765Z 234.57 KiB / 234.57 KiB [------------------------------------------------------] 100.00% ? p/s 100ms2026-11-25T22:56:18Z	WARN	[rego] Module will be skipped as current version of Trivy is older than minimum trivy version required - please update Trivy to use this module	file_path="home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops/.cache/trivy/policy/content/policies/cloud/policies/aws/cloudfront/enable_logging.rego" minimum_trivy_version="0.72.0"
+iac	Escanear el Terraform	2026-11-25T22:56:18.8458385Z 2026-11-25T22:56:18Z	INFO	[terraform scanner] Scanning root module	file_path="envs"
+iac	Escanear el Terraform	2026-11-25T22:56:18.8481485Z 2026-11-25T22:56:18Z	WARN	[terraform parser] Variable values were not found in the environment or variable files. Evaluating may not work correctly.	module="root" variables="db_backup_retention_days, db_deletion_protection, db_instance_class, db_multi_az, desired_count, environment, image_tag, log_retention_days, redis_node_type, task_cpu, task_memory, vpc_cidr"
+iac	Escanear el Terraform	2026-11-25T22:56:18.8714470Z 2026-11-25T22:56:18Z	INFO	[terraform scanner] Scanning root module	file_path="shared"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9267737Z 2026-11-25T22:56:18Z	INFO	Detected config files	num=7
+iac	Escanear el Terraform	2026-11-25T22:56:18.9273563Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9273596Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9274560Z Report Summary
+iac	Escanear el Terraform	2026-11-25T22:56:18.9274768Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9275323Z ┌─────────────────────────────┬───────────┬───────────────────┐
+iac	Escanear el Terraform	2026-11-25T22:56:18.9275943Z │           Target            │   Type    │ Misconfigurations │
+iac	Escanear el Terraform	2026-11-25T22:56:18.9276414Z ├─────────────────────────────┼───────────┼───────────────────┤
+iac	Escanear el Terraform	2026-11-25T22:56:18.9276830Z │ envs                        │ terraform │         0         │
+iac	Escanear el Terraform	2026-11-25T22:56:18.9277382Z ├─────────────────────────────┼───────────┼───────────────────┤
+iac	Escanear el Terraform	2026-11-25T22:56:18.9277805Z │ envs/main.tf                │ terraform │         5         │
+iac	Escanear el Terraform	2026-11-25T22:56:18.9278277Z ├─────────────────────────────┼───────────┼───────────────────┤
+iac	Escanear el Terraform	2026-11-25T22:56:18.9278752Z │ modules/data/main.tf        │ terraform │         0         │
+iac	Escanear el Terraform	2026-11-25T22:56:18.9279157Z ├─────────────────────────────┼───────────┼───────────────────┤
+iac	Escanear el Terraform	2026-11-25T22:56:18.9279620Z │ modules/ecs-service/main.tf │ terraform │         0         │
+iac	Escanear el Terraform	2026-11-25T22:56:18.9280008Z ├─────────────────────────────┼───────────┼───────────────────┤
+iac	Escanear el Terraform	2026-11-25T22:56:18.9280403Z │ modules/network/main.tf     │ terraform │         0         │
+iac	Escanear el Terraform	2026-11-25T22:56:18.9280812Z ├─────────────────────────────┼───────────┼───────────────────┤
+iac	Escanear el Terraform	2026-11-25T22:56:18.9281157Z │ shared                      │ terraform │         0         │
+iac	Escanear el Terraform	2026-11-25T22:56:18.9281587Z ├─────────────────────────────┼───────────┼───────────────────┤
+iac	Escanear el Terraform	2026-11-25T22:56:18.9281944Z │ shared/main.tf              │ terraform │         0         │
+iac	Escanear el Terraform	2026-11-25T22:56:18.9282376Z 📣 ^[[34mNotices:^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:18.9282714Z   - Version 0.76.2 of Trivy is now available, current version is 0.70.0
+iac	Escanear el Terraform	2026-11-25T22:56:18.9283329Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9283645Z To suppress version checks, run Trivy scans with the --skip-version-check flag
+iac	Escanear el Terraform	2026-11-25T22:56:18.9284010Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9284638Z └─────────────────────────────┴───────────┴───────────────────┘
+iac	Escanear el Terraform	2026-11-25T22:56:18.9285012Z Legend:
+iac	Escanear el Terraform	2026-11-25T22:56:18.9285310Z - '-': Not scanned
+iac	Escanear el Terraform	2026-11-25T22:56:18.9285641Z - '0': Clean (no security findings detected)
+iac	Escanear el Terraform	2026-11-25T22:56:18.9285917Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9285921Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9286103Z envs/main.tf (terraform)
+iac	Escanear el Terraform	2026-11-25T22:56:18.9286563Z ========================
+iac	Escanear el Terraform	2026-11-25T22:56:18.9286922Z Tests: 5 (SUCCESSES: 0, FAILURES: 5)
+iac	Escanear el Terraform	2026-11-25T22:56:18.9287303Z Failures: 5 (HIGH: 1, CRITICAL: 4)
+iac	Escanear el Terraform	2026-11-25T22:56:18.9287557Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9287733Z AWS-0053 (HIGH): Load balancer is exposed publicly.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9288255Z ════════════════════════════════════════
+iac	Escanear el Terraform	2026-11-25T22:56:18.9289340Z There are many scenarios in which you would want to expose a load balancer to the wider internet, but this check exists as a warning to prevent accidental exposure of internal assets. You should ensure that this resource should be exposed publicly.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9290220Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9290224Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9290463Z See https://avd.aquasec.com/misconfig/aws-0053
+iac	Escanear el Terraform	2026-11-25T22:56:18.9290943Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9291335Z  envs/main.tf:131
+iac	Escanear el Terraform	2026-11-25T22:56:18.9291668Z    via envs/main.tf:128-136 (aws_lb.public)
+iac	Escanear el Terraform	2026-11-25T22:56:18.9292103Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9292535Z  128   resource "aws_lb" "public" {
+iac	Escanear el Terraform	2026-11-25T22:56:18.9293172Z  129     name               = "${local.name}-public"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9293653Z  130     load_balancer_type = "application"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9294031Z  131 [   internal           = false
+iac	Escanear el Terraform	2026-11-25T22:56:18.9294445Z  132     subnets            = module.network.public_subnet_ids
+iac	Escanear el Terraform	2026-11-25T22:56:18.9295038Z  133     security_groups    = [aws_security_group.alb_public.id]
+iac	Escanear el Terraform	2026-11-25T22:56:18.9295452Z  134   
+iac	Escanear el Terraform	2026-11-25T22:56:18.9295799Z  135     drop_invalid_header_fields = true
+iac	Escanear el Terraform	2026-11-25T22:56:18.9296153Z  136   }
+iac	Escanear el Terraform	2026-11-25T22:56:18.9296505Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9296772Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9296777Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9297085Z AWS-0054 (CRITICAL): Listener for application load balancer does not use HTTPS.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9298052Z ════════════════════════════════════════
+iac	Escanear el Terraform	2026-11-25T22:56:18.9298982Z Plain HTTP is unencrypted and human-readable. This means that if a malicious actor was to eavesdrop on your connection, they would be able to see all of your data flowing back and forth.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9300114Z You should use HTTPS, which is HTTP over an encrypted (TLS) connection, meaning eavesdroppers cannot read your traffic.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9300764Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9300770Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9300992Z See https://avd.aquasec.com/misconfig/aws-0054
+iac	Escanear el Terraform	2026-11-25T22:56:18.9301414Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9301786Z  envs/main.tf:165-178
+iac	Escanear el Terraform	2026-11-25T22:56:18.9302117Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9302506Z  165 ┌ resource "aws_lb_listener" "internal" {
+iac	Escanear el Terraform	2026-11-25T22:56:18.9303194Z  166 │   load_balancer_arn = aws_lb.internal.arn
+iac	Escanear el Terraform	2026-11-25T22:56:18.9303593Z  167 │   port              = 80
+iac	Escanear el Terraform	2026-11-25T22:56:18.9303956Z  168 │   protocol          = "HTTP"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9304306Z  169 │ 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9304584Z  170 │   default_action {
+iac	Escanear el Terraform	2026-11-25T22:56:18.9304977Z  171 │     type = "fixed-response"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9305487Z  172 │     fixed_response {
+iac	Escanear el Terraform	2026-11-25T22:56:18.9305873Z  173 └       content_type = "text/plain"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9306211Z  ...   
+iac	Escanear el Terraform	2026-11-25T22:56:18.9306557Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9306778Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9306782Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9307049Z AWS-0054 (CRITICAL): Listener for application load balancer does not use HTTPS.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9307559Z ════════════════════════════════════════
+iac	Escanear el Terraform	2026-11-25T22:56:18.9308301Z Plain HTTP is unencrypted and human-readable. This means that if a malicious actor was to eavesdrop on your connection, they would be able to see all of your data flowing back and forth.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9309493Z You should use HTTPS, which is HTTP over an encrypted (TLS) connection, meaning eavesdroppers cannot read your traffic.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9310024Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9310029Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9310190Z See https://avd.aquasec.com/misconfig/aws-0054
+iac	Escanear el Terraform	2026-11-25T22:56:18.9310690Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9311059Z  envs/main.tf:138-153
+iac	Escanear el Terraform	2026-11-25T22:56:18.9311442Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9311873Z  138 ┌ resource "aws_lb_listener" "public" {
+iac	Escanear el Terraform	2026-11-25T22:56:18.9312290Z  139 │   for_each = toset(["80", "8081"])
+iac	Escanear el Terraform	2026-11-25T22:56:18.9312666Z  140 │ 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9313244Z  141 │   load_balancer_arn = aws_lb.public.arn
+iac	Escanear el Terraform	2026-11-25T22:56:18.9313739Z  142 │   port              = tonumber(each.key)
+iac	Escanear el Terraform	2026-11-25T22:56:18.9314156Z  143 │   protocol          = "HTTP"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9314463Z  144 │ 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9314765Z  145 │   default_action {
+iac	Escanear el Terraform	2026-11-25T22:56:18.9315115Z  146 └     type = "fixed-response"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9315427Z  ...   
+iac	Escanear el Terraform	2026-11-25T22:56:18.9315761Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9315971Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9315975Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9316192Z AWS-0054 (CRITICAL): Listener for application load balancer does not use HTTPS.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9316739Z ════════════════════════════════════════
+iac	Escanear el Terraform	2026-11-25T22:56:18.9317498Z Plain HTTP is unencrypted and human-readable. This means that if a malicious actor was to eavesdrop on your connection, they would be able to see all of your data flowing back and forth.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9318516Z You should use HTTPS, which is HTTP over an encrypted (TLS) connection, meaning eavesdroppers cannot read your traffic.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9318944Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9318976Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9319119Z See https://avd.aquasec.com/misconfig/aws-0054
+iac	Escanear el Terraform	2026-11-25T22:56:18.9319537Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9319883Z  envs/main.tf:138-153
+iac	Escanear el Terraform	2026-11-25T22:56:18.9320248Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9320674Z  138 ┌ resource "aws_lb_listener" "public" {
+iac	Escanear el Terraform	2026-11-25T22:56:18.9321052Z  139 │   for_each = toset(["80", "8081"])
+iac	Escanear el Terraform	2026-11-25T22:56:18.9321405Z  140 │ 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9321742Z  141 │   load_balancer_arn = aws_lb.public.arn
+iac	Escanear el Terraform	2026-11-25T22:56:18.9322296Z  142 │   port              = tonumber(each.key)
+iac	Escanear el Terraform	2026-11-25T22:56:18.9322716Z  143 │   protocol          = "HTTP"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9323218Z  144 │ 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9323516Z  145 │   default_action {
+iac	Escanear el Terraform	2026-11-25T22:56:18.9323916Z  146 └     type = "fixed-response"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9324213Z  ...   
+iac	Escanear el Terraform	2026-11-25T22:56:18.9324571Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9324761Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9324765Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9325047Z AWS-0104 (CRITICAL): Security group rule allows unrestricted egress to any IP address.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9325659Z ════════════════════════════════════════
+iac	Escanear el Terraform	2026-11-25T22:56:18.9326405Z Opening up ports to connect out to the public internet is generally to be avoided. You should restrict access to IP addresses or ranges that are explicitly required where possible.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9327164Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9327167Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9327335Z See https://avd.aquasec.com/misconfig/aws-0104
+iac	Escanear el Terraform	2026-11-25T22:56:18.9327794Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9328118Z  envs/main.tf:116
+iac	Escanear el Terraform	2026-11-25T22:56:18.9328569Z    via envs/main.tf:114-119 (aws_vpc_security_group_egress_rule.tasks)
+iac	Escanear el Terraform	2026-11-25T22:56:18.9329057Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9329473Z  114   resource "aws_vpc_security_group_egress_rule" "tasks" {
+iac	Escanear el Terraform	2026-11-25T22:56:18.9329973Z  115     security_group_id = aws_security_group.tasks.id
+iac	Escanear el Terraform	2026-11-25T22:56:18.9330408Z  116 [   cidr_ipv4         = "0.0.0.0/0"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9330827Z  117     ip_protocol       = "-1"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9331184Z  118     description       = "Salida de las tareas"
+iac	Escanear el Terraform	2026-11-25T22:56:18.9331580Z  119   }
+iac	Escanear el Terraform	2026-11-25T22:56:18.9331949Z ────────────────────────────────────────
+iac	Escanear el Terraform	2026-11-25T22:56:18.9332217Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9332221Z 
+iac	Escanear el Terraform	2026-11-25T22:56:18.9365515Z ##[error]Process completed with exit code 1.
+iac	Escanear el Terraform	2026-11-25T22:56:18.9371714Z ##[end-action id=__aquasecurity_trivy-action.__run_4;outcome=failure;conclusion=failure;duration_ms=2171]
+iac	Escanear el Terraform	2026-11-25T22:56:18.9375440Z ##[start-action display=Remove Trivy Envs file;id=__aquasecurity_trivy-action.__run_5]
+iac	Escanear el Terraform	2026-11-25T22:56:18.9391963Z ##[group]Run rm -f trivy_envs.txt
+iac	Escanear el Terraform	2026-11-25T22:56:18.9392277Z ^[[36;1mrm -f trivy_envs.txt^[[0m
+iac	Escanear el Terraform	2026-11-25T22:56:18.9411129Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+iac	Escanear el Terraform	2026-11-25T22:56:18.9411597Z ##[endgroup]
+iac	Escanear el Terraform	2026-11-25T22:56:18.9464345Z ##[end-action id=__aquasecurity_trivy-action.__run_5;outcome=success;conclusion=success;duration_ms=8]
+iac	Post Escanear el Terraform	﻿2026-11-25T22:56:18.9624275Z Post job cleanup.
+iac	Post Escanear el Terraform	2026-11-25T22:56:18.9628509Z ##[start-action display=Restore DB from cache;id=__d771d20f-434a-4612-aec2-1d05d3d51465.__actions_cache]
+iac	Post Escanear el Terraform	2026-11-25T22:56:18.9630621Z ##[end-action id=__d771d20f-434a-4612-aec2-1d05d3d51465.__actions_cache;outcome=skipped;conclusion=skipped;duration_ms=0]
+iac	Post Escanear el Terraform	2026-11-25T22:56:18.9632450Z ##[start-action display=Install Trivy;id=__d771d20f-434a-4612-aec2-1d05d3d51465.__aquasecurity_setup-trivy]
+iac	Post Escanear el Terraform	2026-11-25T22:56:18.9691010Z Post job cleanup.
+iac	Post Escanear el Terraform	2026-11-25T22:56:18.9695366Z ##[end-action id=__d771d20f-434a-4612-aec2-1d05d3d51465.__aquasecurity_setup-trivy;outcome=success;conclusion=success;duration_ms=6]
+iac	Post Run actions/checkout@v4	﻿2026-11-25T22:56:18.9886269Z Post job cleanup.
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0585471Z [command]/usr/bin/git version
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0616780Z git version 2.56.1
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0643433Z Temporarily overriding HOME='/home/runner/work/_temp/3ac80e3e-bcfe-4262-a840-bd380dc682a7' before making global git config changes
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0644277Z Adding repository directory to the temporary git global config as a safe directory
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0647310Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/tero-obligatorio-devops/tero-obligatorio-devops
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0677800Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0710542Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0939665Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0957924Z http.https://github.com/.extraheader
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0965764Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.0991487Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.1192023Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+iac	Post Run actions/checkout@v4	2026-11-25T22:56:19.1212495Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+iac	Complete job	﻿2026-11-25T22:56:19.1514083Z Cleaning up orphan processes
+iac	Complete job	2026-11-25T22:56:19.1776680Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

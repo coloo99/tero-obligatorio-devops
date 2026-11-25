@@ -110,12 +110,34 @@ resource "aws_vpc_security_group_ingress_rule" "tasks" {
   description                  = "Desde el ALB ${each.key}"
 }
 
-# Salida libre: ECR, Secrets Manager, CloudWatch Logs, ALB interno y bases de datos.
-resource "aws_vpc_security_group_egress_rule" "tasks" {
+# Salida de las tareas, solo lo que necesitan:
+# - HTTPS (443) a internet: ECR, Secrets Manager y CloudWatch Logs. Sin NAT ni VPC
+#   endpoints (descartados por costo) se alcanzan por sus IP públicas, que no son fijas.
+# - 80, 5432 y 6379 dentro de la VPC: ALB interno, PostgreSQL y Redis.
+# Excepción de Trivy justificada en docs/informes/seguridad.md.
+#trivy:ignore:AWS-0104
+resource "aws_vpc_security_group_egress_rule" "tasks_https" {
   security_group_id = aws_security_group.tasks.id
   cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1"
-  description       = "Salida de las tareas"
+  ip_protocol       = "tcp"
+  from_port         = 443
+  to_port           = 443
+  description       = "HTTPS a ECR, Secrets Manager y CloudWatch Logs"
+}
+
+resource "aws_vpc_security_group_egress_rule" "tasks_vpc" {
+  for_each = {
+    alb-interno = 80
+    postgres    = 5432
+    redis       = 6379
+  }
+
+  security_group_id = aws_security_group.tasks.id
+  cidr_ipv4         = module.network.vpc_cidr
+  ip_protocol       = "tcp"
+  from_port         = each.value
+  to_port           = each.value
+  description       = "Hacia ${each.key}, dentro de la VPC"
 }
 
 # ── Balanceadores ────────────────────────────────────────────────────────────
@@ -125,6 +147,9 @@ resource "aws_vpc_security_group_egress_rule" "tasks" {
 # Cada servicio agrega su propia regla (módulo ecs-service); lo que no coincide
 # con ninguna regla recibe un 404.
 
+# Tiene que ser público: es la entrada de la tienda y del admin (Trivy AWS-0053).
+# Solo expone el 80 y el 8081 y reenvía únicamente al 8080 de las tareas.
+#trivy:ignore:AWS-0053
 resource "aws_lb" "public" {
   name               = "${local.name}-public"
   load_balancer_type = "application"
@@ -135,6 +160,9 @@ resource "aws_lb" "public" {
   drop_invalid_header_fields = true
 }
 
+# HTTP sin TLS (Trivy AWS-0054): el Learner Lab no permite dominio ni certificado
+# de ACM. En una cuenta real: listener 443 con ACM y el 80 redirigiendo al 443.
+#trivy:ignore:AWS-0054
 resource "aws_lb_listener" "public" {
   for_each = toset(["80", "8081"])
 
@@ -162,6 +190,9 @@ resource "aws_lb" "internal" {
   drop_invalid_header_fields = true
 }
 
+# HTTP sin TLS (Trivy AWS-0054): tráfico entre servicios dentro de la VPC, por un
+# balanceador interno que solo acepta a las tareas. Mismo límite del certificado.
+#trivy:ignore:AWS-0054
 resource "aws_lb_listener" "internal" {
   load_balancer_arn = aws_lb.internal.arn
   port              = 80

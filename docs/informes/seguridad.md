@@ -42,3 +42,16 @@ Corrida #3 del PR #44, ya con las actions corregidas. Gitleaks, Semgrep, SonarCl
 Para comprobar que el control funciona, se abrió un PR de prueba (rama `test/secreto-falso`) con una clave privada RSA inventada en `prueba-secreto.txt`. El job `secretos` falló con `RuleID: private-key` y `leaks found: 1`; el resto de los jobs pasó. Gitleaks muestra el secreto como `REDACTED`, así que tampoco queda expuesto en los logs. El PR se cerró sin mergear y la rama se borró: el archivo nunca llegó a `main`.
 
 Evidencia: `docs/evidencia/fase-2/07-gitleaks-bloquea.png`.
+
+## Escaneo del Terraform (25/11/2026)
+
+Primera corrida del job `iac` (corrida 45717315434, lanzada a mano en la rama `feature/terraform`): Trivy 0.70.0 en modo config sobre `infra/`, bloqueando HIGH y CRITICAL. Encontró 5 hallazgos, todos en `infra/envs/main.tf`; `infra/shared` y los módulos, sin hallazgos. La salida completa está en `docs/evidencia/fase-3/iac-trivy-antes.txt`.
+
+Uno se corrigió en parte y los demás son decisiones de diseño impuestas por el Learner Lab. Cada excepción lleva un comentario `#trivy:ignore:<ID>` en la línea anterior al recurso, con el motivo.
+
+| Fecha | Herramienta | Hallazgo (CVE o regla) | Severidad | Servicio | Acción | Estado |
+| --- | --- | --- | --- | --- | --- | --- |
+| 25/11/2026 | Trivy config | AWS-0053: balanceador expuesto a internet (`aws_lb.public`) | HIGH | Infraestructura | Es la entrada de la tienda (puerto 80) y del admin (8081): tiene que ser público. Su security group solo deja salir hacia el 8080 de las tareas, y el balanceador interno sí es interno. Excepción con `#trivy:ignore:AWS-0053` | Aceptado |
+| 25/11/2026 | Trivy config | AWS-0054: listeners HTTP sin TLS en el balanceador público (puertos 80 y 8081) | CRITICAL | Infraestructura | HTTPS necesita un certificado de ACM y un dominio para validarlo, y el Learner Lab no permite ninguno de los dos. En una cuenta real: listener 443 con certificado de ACM y el 80 redirigiendo al 443. Excepción con `#trivy:ignore:AWS-0054` | Aceptado |
+| 25/11/2026 | Trivy config | AWS-0054: listener HTTP sin TLS en el balanceador interno | CRITICAL | Infraestructura | Tráfico entre servicios que no sale de la VPC: el balanceador es interno (solo IP privadas) y solo acepta conexiones de las tareas. Mismo límite del certificado. Excepción con `#trivy:ignore:AWS-0054` | Aceptado |
+| 25/11/2026 | Trivy config | AWS-0104: salida sin restricciones desde las tareas de ECS (todo el tráfico a `0.0.0.0/0`) | CRITICAL | Infraestructura | Corregido en parte: la salida pasó a ser solo HTTPS (443) hacia internet, más 80, 5432 y 6379 dentro de la VPC (ALB interno, PostgreSQL y Redis). El 443 a internet queda porque, sin NAT ni VPC endpoints (descartados por costo), ECR, Secrets Manager y CloudWatch Logs se alcanzan por sus IP públicas, que no son fijas. En una cuenta real: VPC endpoints y salida solo hacia ellos. Excepción con `#trivy:ignore:AWS-0104` | Corregido en parte y aceptado |
