@@ -67,6 +67,22 @@ jobs:
           exit-code: "1"
           trivyignores: .trivyignore
 
+  # IaC: configuraciones inseguras en el Terraform de infra/ (Trivy en modo config).
+  # Bloquea CRITICAL y HIGH. Cada excepcion se justifica en el codigo con #trivy:ignore
+  # y se registra en docs/informes/seguridad.md.
+  iac:
+    name: iac
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Escanear el Terraform
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: config
+          scan-ref: infra
+          severity: CRITICAL,HIGH
+          exit-code: "1"
+
   # Calidad: SonarCloud con quality gate (bugs, vulnerabilidades, code smells, duplicacion).
   calidad:
     name: calidad
