@@ -56,6 +56,12 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// go-envconfig v0.1.1 expande "$" dentro de los valores y la contraseña
+	// que genera RDS puede traerlo: se lee tal cual desde el entorno.
+	if p, ok := os.LookupEnv("RETAIL_CATALOG_PERSISTENCE_PASSWORD"); ok {
+		config.Database.Password = p
+	}
+
 	db, err := repository.NewRepository(config.Database)
 	if err != nil {
 		log.Fatal(err)
